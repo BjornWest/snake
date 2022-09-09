@@ -20,20 +20,7 @@ input.onButtonPressed(Button.B, function () {
         }
     }
 })
-let food = 0
-let foodTemp = 0
-let run = 0
-let direction = 0
-let canMove = 0
-let length = 1
-let xpos = 2
-let ypos = 3
-let xList = [xpos]
-let yList = [ypos]
-let foodX = 2
-let foodY = 2
-canMove = 0
-loops.everyInterval(500, function () {
+function snakeMove () {
     canMove = 0
     led.plot(foodX, foodY)
     if (run == 0) {
@@ -76,6 +63,29 @@ loops.everyInterval(500, function () {
         }
     }
     led.plot(xpos, ypos)
+}
+let food = 0
+let foodTemp = 0
+let run = 0
+let direction = 0
+let canMove = 0
+let foodY = 0
+let foodX = 0
+let yList: number[] = []
+let xList: number[] = []
+let ypos = 0
+let xpos = 0
+let length = 0
+length = 1
+xpos = 2
+ypos = 3
+xList = [xpos]
+yList = [ypos]
+foodX = 2
+foodY = 2
+canMove = 0
+loops.everyInterval(500, function () {
+    snakeMove()
 })
 basic.forever(function () {
     if (xpos == foodX && ypos == foodY) {
