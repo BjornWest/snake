@@ -56,6 +56,10 @@ function snakeMove () {
                 run += 1
                 basic.showIcon(IconNames.Sad)
                 control.waitMicros(2000000)
+                music.playTone(330, music.beat(BeatFraction.Whole))
+                music.playTone(311, music.beat(BeatFraction.Whole))
+                music.playTone(294, music.beat(BeatFraction.Whole))
+                music.playTone(277, music.beat(BeatFraction.Breve))
                 basic.showNumber(length)
                 control.waitMicros(2000000)
                 control.reset()
@@ -90,6 +94,8 @@ loops.everyInterval(500, function () {
 basic.forever(function () {
     if (xpos == foodX && ypos == foodY) {
         length += 1
+        music.playTone(932, music.beat(BeatFraction.Half))
+        music.playTone(988, music.beat(BeatFraction.Half))
         food = randint(0, 25 - length)
         foodX = 0
         foodY = 0
@@ -115,4 +121,10 @@ basic.forever(function () {
         }
         led.plot(foodX, foodY)
     }
+})
+basic.forever(function () {
+    control.waitMicros(500000)
+    led.unplot(foodX, foodY)
+    control.waitMicros(500000)
+    led.plot(foodX, foodY)
 })
